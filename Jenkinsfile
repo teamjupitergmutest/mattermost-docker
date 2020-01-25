@@ -11,7 +11,7 @@
                     echo 'Starting to build docker image DB'
                     script {
                         dir ('db') {
-                            dockerImage = docker.build("mattermost-docker_db:${BUILD_NUMBER}")
+                            dockerImage = docker.build("teamjupitergmutest/jupiter-test:${BUILD_NUMBER}")
                             docker.withRegistry("https://registry.hub.docker.com", registryCredential){
                             dockerImage.push()
                            }   
