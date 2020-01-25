@@ -11,22 +11,22 @@
                     echo 'Starting to build docker image DB'
                     script {
                         dir ('db') {
-                            dockerImage = docker.build("teamjupitergmutest/jupiter-test:${BUILD_NUMBER}")
+                            dockerImage = docker.build("teamjupitergmutest/jupiter-test:db-${BUILD_NUMBER}")
                             docker.withRegistry("https://registry.hub.docker.com", registryCredential){
                             dockerImage.push()
                            }   
                          }
                     echo 'Starting to build docker image APP'
                         dir ('app') {
-                              sh 'docker build -t mattermost-docker_app:${BUILD_NUMBER} .'
-                              sh 'docker tag mattermost-docker_app:${BUILD_NUMBER} teamjupitergmutest/jupiter-test'
-                              sh 'docker push teamjupitergmutest/jupiter-test'
+                            dockerImage = docker.build("teamjupitergmutest/jupiter-test:app-${BUILD_NUMBER}")
+                            docker.withRegistry("https://registry.hub.docker.com", registryCredential){
+                            dockerImage.push()
                            }
                     echo 'Starting to build docker image WEB'
-                        dir ('app') {
-                              sh 'docker build -t mattermost-docker_web:${BUILD_NUMBER} .'
-                              sh 'docker tag mattermost-docker_web:${BUILD_NUMBER} teamjupitergmutest/jupiter-test'
-                              sh 'docker push teamjupitergmutest/jupiter-test'
+                        dir ('web') {
+                            dockerImage = docker.build("teamjupitergmutest/jupiter-test:web-${BUILD_NUMBER}")
+                            docker.withRegistry("https://registry.hub.docker.com", registryCredential){
+                            dockerImage.push()
                            }
                     }
                 }
