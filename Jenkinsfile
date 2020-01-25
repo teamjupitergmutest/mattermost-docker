@@ -1,4 +1,3 @@
-// testing build trigger
 pipeline {
         environment {
             registryCredential = "dockerhub"
