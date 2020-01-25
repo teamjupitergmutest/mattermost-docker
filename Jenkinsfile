@@ -32,6 +32,7 @@
                             dockerImage.push()
                            }   
                          }
+                    }
                 }
             // stage('Additional configurations') {
             //     steps {
