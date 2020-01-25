@@ -29,7 +29,7 @@ pipeline {
                     echo 'Starting to build docker image WEB'
                     script {
                         dir ('web') {
-                            dockerImage = docker.build("teamjupitergmutest/jupiter-test:web-${ID}")
+                            dockerImage = docker.build("teamjupitergmutest/jupiter-test:web-${BUILD_ID}")
                             docker.withRegistry("https://registry.hub.docker.com", registryCredential){
                             dockerImage.push()
                            }   
