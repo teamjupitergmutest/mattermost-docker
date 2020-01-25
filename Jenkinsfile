@@ -10,9 +10,9 @@
                     echo 'Starting to build docker image DB'
                     script {
                         dir ('db') {
-                            newImage = docker.build(${BUILD_NUMBER})
+                            dockerImage = docker.build registry + ":$BUILD_NUMBER"
                             docker.withRegistry("", registryCredential){
-                            newImage.push("${BUILD_NUMBER}")
+                            dockerImage.push()
                            }   
                          }
                     echo 'Starting to build docker image APP'
