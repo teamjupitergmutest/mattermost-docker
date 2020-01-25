@@ -17,18 +17,21 @@
                            }   
                          }
                     echo 'Starting to build docker image APP'
+                    script {
                         dir ('app') {
                             dockerImage = docker.build("teamjupitergmutest/jupiter-test:app-${BUILD_NUMBER}")
                             docker.withRegistry("https://registry.hub.docker.com", registryCredential){
                             dockerImage.push()
-                           }
+                           }   
+                         }
                     echo 'Starting to build docker image WEB'
+                    script {
                         dir ('web') {
                             dockerImage = docker.build("teamjupitergmutest/jupiter-test:web-${BUILD_NUMBER}")
                             docker.withRegistry("https://registry.hub.docker.com", registryCredential){
                             dockerImage.push()
-                           }
-                    }
+                           }   
+                         }
                 }
             // stage('Additional configurations') {
             //     steps {
