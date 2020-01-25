@@ -33,4 +33,4 @@
             }
             
         }
-    }://github.com/teamjupitergmutest/mattermost-docker.gitmage: mattermost-server:v1
+    }
