@@ -32,15 +32,15 @@
                             dockerImage.push()
                            }   
                          }
-                    }
-        stage('Remove old docker images') {
-            steps {
-                sh "docker rmi teamjupitergmutest/jupiter-test:db-${BUILD_NUMBER-1}"
-                sh "docker rmi teamjupitergmutest/jupiter-test:app-${BUILD_NUMBER-1}"
-                sh "docker rmi teamjupitergmutest/jupiter-test:web-${BUILD_NUMBER-1}"
+                        }
+            stage('Remove old docker images') {
+                steps {
+                    sh "docker rmi teamjupitergmutest/jupiter-test:db-${BUILD_NUMBER-1}"
+                    sh "docker rmi teamjupitergmutest/jupiter-test:app-${BUILD_NUMBER-1}"
+                    sh "docker rmi teamjupitergmutest/jupiter-test:web-${BUILD_NUMBER-1}"
+                   }
+                  }
                 }
-               }
-              }
              }
             // stage('Additional configurations') {
             //     steps {
