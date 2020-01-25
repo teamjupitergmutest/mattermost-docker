@@ -14,6 +14,7 @@
                             docker.withRegistry("", registryCredential){
                             newImage.push("${BUILD_NUMBER}")
                            }   
+                         }
                     echo 'Starting to build docker image APP'
                         dir ('app') {
                               sh 'docker build -t mattermost-docker_app:${BUILD_NUMBER} .'
