@@ -33,14 +33,21 @@
                            }   
                          }
                     }
-                    }
+        stage('Remove old docker images') {
+            steps {
+                sh "docker rmi teamjupitergmutest/jupiter-test:db-${BUILD_NUMBER-1}"
+                sh "docker rmi teamjupitergmutest/jupiter-test:app-${BUILD_NUMBER-1}"
+                sh "docker rmi teamjupitergmutest/jupiter-test:web-${BUILD_NUMBER-1}"
                 }
+               }
+              }
+             }
             // stage('Additional configurations') {
             //     steps {
             //         sh 'mkdir -pv ./volumes/app/mattermost/{data,logs,config,plugins,client-plugins}'
             //         sh 'chown -R 2000:2000 ./volumes/app/mattermost/'
             //     }
-            }
            }
+          }
         }
     }
