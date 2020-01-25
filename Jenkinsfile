@@ -1,9 +1,5 @@
 
     pipeline {
-        environment {
-            registryCredential = "dockerhub"
-            dockerImage = ""
-        }
         agent any
         stages {
             stage('Build Docker images') {
@@ -11,9 +7,9 @@
                     echo 'Starting to build docker image DB'
                     script {
                         dir ('db') {
-                            dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                            docker.withRegistry("", registryCredential){
-                            dockerImage.push()
+                              sh 'docker build -t mattermost-docker_db:${BUILD_NUMBER} .'
+                              sh 'docker tag mattermost-docker_db:${BUILD_NUMBER} teamjupitergmutest/jupiter-test'
+                              sh 'docker push teamjupitergmutest/jupiter-test'
                            }   
                          }
                     echo 'Starting to build docker image APP'
