@@ -12,7 +12,7 @@
                     script {
                         dir ('db') {
                             dockerImage = docker.build("mattermost-docker_db:${BUILD_NUMBER}")
-                            docker.withRegistry("https://hub.docker.com/repository/docker/teamjupitergmutest/jupiter-test", registryCredential){
+                            docker.withRegistry("https://registry.hub.docker.com", registryCredential){
                             dockerImage.push()
                            }   
                          }
