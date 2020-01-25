@@ -40,7 +40,7 @@ pipeline {
             stage('Remove old Docker images') {
                 steps {
                     echo 'Starting to build docker image DB'
-                        echo '${BUILD_NUMBER - 1}'
+                    echo "${BUILD_NUMBER - 1}"
                     sh "docker rmi teamjupitergmutest/jupiter-test:db-${BUILD_NUMBER-1}"
                     sh "docker rmi teamjupitergmutest/jupiter-test:app-${BUILD_NUMBER-1}"
                     sh "docker rmi teamjupitergmutest/jupiter-test:web-${BUILD_NUMBER-1}"
