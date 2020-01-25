@@ -40,9 +40,9 @@ pipeline {
              	    }
             stage('Remove old Docker images') {
                 steps {
-                    sh "docker rmi registry + ':db-${BUILD_ID}'"
-                    sh "docker rmi (registry + ':app-${BUILD_ID}'"
-                    sh "docker rmi (registry + ':web-${BUILD_ID}'"
+                    sh "docker rmi ${registry} + ':db-${BUILD_ID}'"
+                    sh "docker rmi ${registry} + ':app-${BUILD_ID}'"
+                    sh "docker rmi ${registry} + ':web-${BUILD_ID}'"
                    }
                   }
          }
